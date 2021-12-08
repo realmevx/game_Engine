@@ -111,27 +111,29 @@ def getItems():
             return 0
 
 def skillCheck(skill):
-
-    if skill in range(0, 30):
-        return 1
-    elif skill in range(30, 50):
-        return 2
-    elif skill in range(50, 70):
-        return 3
-    elif skill in range(70, 90):
-        return 4
-    elif skill in range(90, 110):
-        return 5
-    elif skill in range(110, 130):
-        return 6
-    elif skill in range(130, 150):
-        return 7
-    elif skill in range(150, 170):
-        return 8
-    elif skill in range(170, 190):
-        return 9
-    else:
-        print("error, invalid skill number")
+    # Change proposed on 12/7/2021 (M/D/Y) by spidertyler2005 on github.
+    #
+    # I changed your code to use a dictionary.
+    # I think it would also be reasonable to use a list in the format below
+    # [[range(0,30),1],[range(30,50),2]]
+    # NOTE: this is untested. You might need to change things.
+    skillDict = {
+        range(0,30)     :  1,
+        range(30,50)    :  2,
+        range(50,70)    :  3,
+        range(70,90)    :  4,
+        range(90,110)   :  5,
+        range(110,130)  :  6,
+        range(130,150)  :  7,
+        range(150,170)  :  8,
+        range(170,190)  :  9
+    }
+    for x in skillDict.keys():
+        if skill in x:
+            return skillDict[x]
+    # VV  use whichever one you like.  VV
+    # print("error, invalid skill number")
+    raise ValueError(f"error, invalid skill number: {skill}")
 
 
 def help():
